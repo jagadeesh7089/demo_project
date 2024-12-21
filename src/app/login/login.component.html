@@ -1,0 +1,13 @@
+<p>login works!</p>
+
+<form [formGroup]="loginform">
+    <input type="text"  formControlName="username" placeholder="username" [maxlength]="10"><br><br>
+    <div *ngIf="loginform.controls['username'].touched && loginform.controls['username'].errors">
+        <p *ngIf="loginform.controls['username'].errors['required']">password must be required</p>
+        <p *ngIf="loginform.controls['username'].errors['minlength']"> password Must be minimum 4 characters</p>
+        <p *ngIf="loginform.controls['username'].errors['maxlength']"> password Must be maximum 10 characters</p>
+    </div>
+    <input type="number" formControlName="password" placeholder="password" max="99999999">
+    <div *ngIf="loginform.controls['password'].touched&& loginform.controls['password'].errors">Password must be required and min 8 charecters</div>
+    <button (click)="login()" [disabled]="!loginform.valid" >Login</button>
+</form>
